@@ -14,6 +14,9 @@
 <meta property="og:image:height" content="1260">
 <meta property="og:url" content="https://edycutjong.github.io/the-commons/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#080611;
@@ -27,6 +30,8 @@
     --card:rgba(255,255,255,0.04);
     --card-border:rgba(255,255,255,0.10);
     --maxw:1120px;
+    --font-display:'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-body:'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -36,12 +41,14 @@
       radial-gradient(ellipse 900px 700px at 92% 10%, rgba(16,185,129,0.14), transparent 60%),
       var(--bg);
     color:var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family:var(--font-body);
     line-height:1.5;
     overflow-x:hidden;
     min-height:100vh;
   }
   a{color:inherit;}
+  h1.title,.section-head h2,.card h3,.final-cta h2,
+  .tcard .q,.faq summary{font-family:var(--font-display);}
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
   .grain{
     position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.035; mix-blend-mode:overlay;
@@ -225,6 +232,26 @@
   footer a{text-decoration:none; color:var(--muted); border-bottom:1px dotted rgba(155,147,196,0.4);}
   footer a:hover{color:var(--ink);}
 
+  /* voices after midnight (in-world flavor, not real reviews) */
+  .testis{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .tcard{position:relative;background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:26px 22px 22px;transition:transform .2s ease,border-color .2s ease;}
+  .tcard:hover{transform:translateY(-4px);border-color:rgba(139,92,246,0.4);}
+  .tcard .mark{font-family:Georgia,serif;font-size:42px;line-height:0;color:var(--primary);opacity:0.55;}
+  .tcard .q{margin:6px 0 18px;font-size:1rem;line-height:1.5;color:var(--ink);}
+  .tcard .who{display:flex;align-items:center;gap:12px;}
+  .tcard .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#0b0714;background:linear-gradient(120deg,var(--primary),var(--accent));}
+  .tcard .u{font-weight:700;font-size:0.9rem;}
+  .tcard .r{color:var(--muted);opacity:.8;font-size:0.78rem;}
+  .note-flag{text-align:center;color:var(--muted);opacity:.7;font-size:0.78rem;margin-top:22px;}
+  .faq{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+  .faq details{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:0 20px;transition:border-color .2s ease;}
+  .faq details[open]{border-color:rgba(139,92,246,0.4);}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 0;font-size:1rem;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .chev{flex:none;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:rgba(139,92,246,0.16);color:var(--primary-ink);transition:transform .2s ease;}
+  .faq details[open] summary .chev{transform:rotate(45deg);}
+  .faq .a{padding:0 0 20px;color:var(--muted);font-size:0.95rem;line-height:1.6;}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
   }
@@ -324,6 +351,7 @@
     <div class="nav-links">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
       <a href="pitch/">Pitch Deck</a>
       <a href="https://github.com/edycutjong/the-commons">GitHub</a>
     </div>
@@ -656,6 +684,36 @@
       <div class="stat"><div class="num">~50ms</div><div class="lbl">10k-commit settle p95</div></div>
       <div class="stat"><div class="num">0</div><div class="lbl">runtime AI calls</div></div>
     </div>
+  </div>
+</section>
+
+<section id="voices" class="wrap">
+  <div class="section-head">
+    <span class="kicker">Voices after midnight</span>
+    <h2>Everyone lives with the verdict</h2>
+    <p>Every Reckoning leaves the subreddit talking. These are the kinds of reactions the
+      game produces the morning after — the voice of the commons, in players' words.</p>
+  </div>
+  <div class="testis">
+    <div class="tcard"><div class="mark">&ldquo;</div><p class="q">I hoarded — sure everyone else would feed and I'd cash out. 58% hoarded too, the pot burned, and I torched my own streak. Couldn't stop thinking about it all day.</p><div class="who"><div class="av">SC</div><div><div class="u">u/second_chair</div><div class="r">the night the pot burned</div></div></div></div>
+    <div class="tcard"><div class="mark">&ldquo;</div><p class="q">Sealed FEED on faith. Woke up to Saint flair and a multiplied stake. Nobody being able to see your choice until midnight is what makes it actually tense.</p><div class="who"><div class="av">QV</div><div><div class="u">u/quiet_vote</div><div class="r">Saint of the week</div></div></div></div>
+    <div class="tcard"><div class="mark">&ldquo;</div><p class="q">The comments before the reveal are pure psychology — everyone swearing they'll cooperate. Then the split drops and it's chaos. I have to come back every night now.</p><div class="who"><div class="av">MT</div><div><div class="u">u/midnight_teller</div><div class="r">14-night streak</div></div></div></div>
+  </div>
+  <p class="note-flag">In-world flavor from the game's seeded rounds — The Commons has no external players yet; nothing here is presented as a real customer review.</p>
+</section>
+
+<section id="faq" class="wrap">
+  <div class="section-head">
+    <span class="kicker">Questions</span>
+    <h2>Before you seal your first choice</h2>
+  </div>
+  <div class="faq">
+    <details open><summary>How do I play? <span class="chev">+</span></summary><div class="a">Each night the post opens one dilemma — a sealed FEED / HOARD-style choice. You commit exactly one secret choice with a stake. Nobody sees the split until the midnight settle, when the Reckoning reveals what the crowd did and pays out. You come back to learn your fate.</div></details>
+    <details><summary>Can anyone see my choice? <span class="chev">+</span></summary><div class="a">No — not other players, not the leaderboard, not even the UI. The commit is structurally sealed until the midnight settle. That secrecy is the whole game.</div></details>
+    <details><summary>Do I need a big crowd for it to work? <span class="chev">+</span></summary><div class="a">No. Every threshold is percent-based, so the drama is identical at 8 players or 8,000 — ten real players produce the same tension as ten thousand.</div></details>
+    <details><summary>Is it free, and does it use AI? <span class="chev">+</span></summary><div class="a">Free, and zero runtime AI. It runs natively inside a Reddit post via Devvit — no install, no payments, no external calls.</div></details>
+    <details><summary>What's it built on? <span class="chev">+</span></summary><div class="a">Devvit Web: a percent-threshold payoff engine, one idempotent watch/multi/exec settle over Redis, a nightly scheduler, and Reddit realtime — with an empty external fetch allowlist.</div></details>
+    <details><summary>Is the code open? <span class="chev">+</span></summary><div class="a">Yes — full source on <a href="https://github.com/edycutjong/the-commons" target="_blank" rel="noopener" style="color:var(--primary-ink)">GitHub</a> under MIT, with CI, 100% coverage on the shared/core/routes gate, 222 passing tests, and a ~50ms settle bench.</div></details>
   </div>
 </section>
 
