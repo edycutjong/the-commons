@@ -2,7 +2,16 @@
   "private": true,
   "name": "the-commons",
   "version": "1.0.0",
+  "description": "✉️ Sealed daily social-dilemma game — commit one hidden choice, learn the collective verdict only tomorrow (Devvit)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edycutjong/the-commons.git"
+  },
+  "homepage": "https://github.com/edycutjong/the-commons#readme",
+  "bugs": {
+    "url": "https://github.com/edycutjong/the-commons/issues"
+  },
   "type": "module",
   "scripts": {
     "build": "vite build",
