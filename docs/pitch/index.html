@@ -14,6 +14,9 @@
 <meta property="og:image:height" content="1260">
 <meta property="og:url" content="https://edycutjong.github.io/the-commons/pitch/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#080611;
@@ -34,9 +37,10 @@
       radial-gradient(ellipse 900px 700px at 95% 105%, rgba(16,185,129,0.13), transparent 60%),
       var(--bg);
     color:var(--ink);
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family:'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     overflow:hidden;
   }
+  h1,h2,h3{font-family:'Outfit', ui-sans-serif, system-ui, sans-serif;}
   .mono{font-family:'JetBrains Mono', Menlo, Consolas, monospace;}
 
   /* ===== deck chrome ===== */
@@ -396,7 +400,7 @@
       <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Four equal axes, one mechanic</h1>
       <div class="grid4">
         <div class="card win"><h3>Delightful UX</h3><p>One thumb, one choice, a sealed envelope and a countdown. First-visit completion under 15 seconds.</p></div>
-        <div class="card win"><h3>Polish</h3><p>No physics/content pipeline to get wrong — the whole budget is micro-interactions + the reveal. 126 tests, benched.</p></div>
+        <div class="card win"><h3>Polish</h3><p>No physics/content pipeline to get wrong — the whole budget is micro-interactions + the reveal. 222 tests, benched.</p></div>
         <div class="card win"><h3>Reddit-y</h3><p>The game board is the community's collective psychology; the comment section becomes propaganda, then accusations.</p></div>
         <div class="card win"><h3>Hook-y</h3><p>Structural unfinished business every 24h — you cannot close the loop without coming back.</p></div>
       </div>
@@ -444,7 +448,7 @@
       <span class="kicker">Traction &amp; Validation — real numbers</span>
       <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">For a solo build, traction is engineering validation</h1>
       <div class="stat-wall">
-        <div class="stat"><div class="v">126</div><div class="l">tests, 11 files — all passing</div></div>
+        <div class="stat"><div class="v">222</div><div class="l">tests, 21 files — all passing</div></div>
         <div class="stat"><div class="v">strict</div><div class="l">tsc --noEmit, clean</div></div>
         <div class="stat"><div class="v">~63ms</div><div class="l">10k-commit settle p95 (2s budget)</div></div>
         <div class="stat"><div class="v">100%</div><div class="l">byte-identical seed / re-settle</div></div>
