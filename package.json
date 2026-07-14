@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "the-commons",
+  "name": "the-commons-game",
   "version": "1.0.0",
   "description": "✉️ Sealed daily social-dilemma game — commit one hidden choice, learn the collective verdict only tomorrow (Devvit)",
   "license": "MIT",

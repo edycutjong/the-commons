@@ -1,6 +1,6 @@
 {
   "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
-  "name": "the-commons",
+  "name": "the-commons-game",
   "post": {
     "dir": "dist/client",
     "entrypoints": {
@@ -77,11 +77,11 @@
   "triggers": {
     "onPostCreate": "/internal/triggers/post-create"
   },
-  "dev": {
-    "subreddit": "TheCommonsGame"
-  },
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build"
+  },
+  "dev": {
+    "subreddit": "the_commons_game_dev"
   }
 }
