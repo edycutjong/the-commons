@@ -1,0 +1,87 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "the-commons",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+      "game": {
+        "entry": "game.html",
+        "height": "tall"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "permissions": {
+    "redis": true,
+    "realtime": true,
+    "reddit": {
+      "enable": true,
+      "scope": "moderator"
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "The Commons: Seed Preseason",
+        "description": "Reset and load the six labeled preseason rounds (deterministic)",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/seed-preseason"
+      },
+      {
+        "label": "The Commons: Void Round",
+        "description": "Void tonight's round (no payouts, commits discarded at settle)",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/void-round"
+      },
+      {
+        "label": "The Commons: Force Settle",
+        "description": "Run the idempotent settle pass for the current round now",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/force-settle"
+      },
+      {
+        "label": "The Commons: Approve Forge Dilemma",
+        "description": "Approve the oldest pending player-forged dilemma",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/approve-forge"
+      }
+    ]
+  },
+  "scheduler": {
+    "tasks": {
+      "settle": {
+        "endpoint": "/internal/cron/settle",
+        "cron": "0 0 * * *"
+      },
+      "open-round": {
+        "endpoint": "/internal/cron/open",
+        "cron": "5 0 * * *"
+      },
+      "weekly-ceremony": {
+        "endpoint": "/internal/cron/ceremony",
+        "cron": "0 1 * * 1"
+      }
+    }
+  },
+  "triggers": {
+    "onPostCreate": "/internal/triggers/post-create"
+  },
+  "dev": {
+    "subreddit": "TheCommonsGame"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  }
+}

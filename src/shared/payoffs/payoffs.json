@@ -1,0 +1,66 @@
+{
+  "economy": {
+    "startingPoints": 100,
+    "participationReward": 5,
+    "insuranceCost": 40,
+    "maxStake": 50,
+    "weeklyDecay": 0.8
+  },
+  "archetypes": {
+    "public_pot": {
+      "label": "Public Pot",
+      "choices": ["FEED", "HOARD"],
+      "cooperative": "FEED",
+      "defaults": { "threshold": 0.7, "feedMult": 2, "hoardMult": 3 },
+      "sliders": {
+        "threshold": { "min": 0.5, "max": 0.9, "step": 0.01, "label": "Feed threshold" },
+        "feedMult": { "min": 1.5, "max": 3, "step": 0.5, "label": "Feeder multiplier" },
+        "hoardMult": { "min": 2, "max": 4, "step": 0.5, "label": "Hoarder multiplier" }
+      }
+    },
+    "stag_hunt": {
+      "label": "Stag Hunt",
+      "choices": ["STAG", "HARE"],
+      "cooperative": "STAG",
+      "defaults": { "threshold": 0.8, "stagMult": 3, "hareMult": 1.5 },
+      "sliders": {
+        "threshold": { "min": 0.6, "max": 0.95, "step": 0.01, "label": "Hunters needed" },
+        "stagMult": { "min": 2, "max": 4, "step": 0.5, "label": "Stag multiplier" },
+        "hareMult": { "min": 1, "max": 2, "step": 0.25, "label": "Hare multiplier" }
+      }
+    },
+    "chicken": {
+      "label": "Chicken",
+      "choices": ["SWERVE", "DARE"],
+      "cooperative": "SWERVE",
+      "defaults": { "crashFrac": 0.5, "dareMult": 3, "swerveMult": 1.25 },
+      "sliders": {
+        "crashFrac": { "min": 0.3, "max": 0.7, "step": 0.01, "label": "Crash line" },
+        "dareMult": { "min": 2, "max": 4, "step": 0.5, "label": "Dare multiplier" },
+        "swerveMult": { "min": 1, "max": 1.5, "step": 0.25, "label": "Swerve multiplier" }
+      }
+    },
+    "lowest_unique": {
+      "label": "Lowest Unique Bid",
+      "choices": ["BID_1", "BID_2", "BID_3", "BID_4", "BID_5"],
+      "cooperative": null,
+      "defaults": { "maxBid": 5, "winMult": 4, "loseFrac": 0.5 },
+      "sliders": {
+        "winMult": { "min": 3, "max": 6, "step": 0.5, "label": "Winner multiplier" },
+        "loseFrac": { "min": 0.25, "max": 0.75, "step": 0.25, "label": "Loser burn fraction" }
+      }
+    },
+    "exact_n": {
+      "label": "Exact-N Heist",
+      "choices": ["GUARD", "HEIST"],
+      "cooperative": "GUARD",
+      "defaults": { "targetFrac": 0.125, "band": 0.05, "heistMult": 5, "guardMult": 1.5 },
+      "sliders": {
+        "targetFrac": { "min": 0.05, "max": 0.3, "step": 0.005, "label": "Crew size" },
+        "band": { "min": 0.01, "max": 0.1, "step": 0.005, "label": "Tolerance band" },
+        "heistMult": { "min": 3, "max": 6, "step": 0.5, "label": "Heist multiplier" },
+        "guardMult": { "min": 1, "max": 2, "step": 0.25, "label": "Guard bounty" }
+      }
+    }
+  }
+}

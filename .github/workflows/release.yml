@@ -1,0 +1,46 @@
+name: Release
+
+# Automatic semantic versioning: semantic-release parses Conventional Commit
+# messages (feat:/fix:/BREAKING CHANGE:) on every push to main, computes the
+# next version, updates package.json + CHANGELOG.md, tags the commit, and
+# publishes a GitHub Release with generated notes. No npm registry publish
+# (npmPublish: false in .releaserc.json) — this is a private Devvit app.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify gates before releasing
+        run: npm run ci
+
+      - name: Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

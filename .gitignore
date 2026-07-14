@@ -1,0 +1,29 @@
+# deps / builds
+node_modules/
+dist/
+.devvit/
+*.tsbuildinfo
+
+# test / coverage
+coverage/
+*.lcov
+.vitest/
+
+# Asset workshop (large local exports, not needed in the repo)
+docs/assets/
+
+# logs & OS noise
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# local env (keep the example checked in)
+.env
+.env.*
+!.env.example

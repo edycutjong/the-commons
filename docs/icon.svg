@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="The Commons icon: a sealed ballot envelope stamping shut">
+  <!-- The Commons animated mark — the nightly sealed ballot. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="tc-brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="var(--accent, #10B981)"/>
+    </linearGradient>
+    <radialGradient id="tc-seal" cx="0.4" cy="0.35" r="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="45%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </radialGradient>
+    <filter id="tc-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tc-stamp  { animation: tc-stamp 2.8s cubic-bezier(.34,1.56,.64,1) infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-ring   { animation: tc-ring 2.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-flap   { stroke-dasharray: 26 14; animation: tc-flap 2.2s linear infinite; }
+      .tc-tick   { animation: tc-tick 2.8s ease-in-out infinite; }
+      @keyframes tc-stamp { 0%,72%,100% { transform: scale(1); } 80% { transform: scale(1.14); } 88% { transform: scale(0.98); } 94% { transform: scale(1.04); } }
+      @keyframes tc-ring  { 0%,72% { transform: scale(0.6); opacity: 0; } 80% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+      @keyframes tc-flap  { to { stroke-dashoffset: -80; } }
+      @keyframes tc-tick  { 0%,100% { opacity: 0.35; } 78% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .tc-stamp,.tc-ring,.tc-flap,.tc-tick { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0A0714"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#tc-brand)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Midnight ticks -->
+  <g class="tc-tick" stroke="url(#tc-brand)" stroke-width="12" stroke-linecap="round">
+    <line x1="256" y1="72" x2="256" y2="108"/>
+    <line x1="196" y1="92" x2="208" y2="120"/>
+    <line x1="316" y1="92" x2="304" y2="120"/>
+  </g>
+
+  <!-- Envelope body -->
+  <rect x="96" y="164" width="320" height="220" rx="28" fill="none" stroke="url(#tc-brand)" stroke-width="18"/>
+  <!-- Envelope flap: sealing energy runs along it -->
+  <path class="tc-flap" d="M104 186 L256 300 L408 186" fill="none" stroke="url(#tc-brand)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Stamp shockwave ring -->
+  <circle class="tc-ring" cx="256" cy="292" r="58" fill="none" stroke="var(--primary, #8B5CF6)" stroke-width="8" opacity="0"/>
+
+  <!-- Wax seal (thumps shut each cycle) -->
+  <g class="tc-stamp">
+    <circle cx="256" cy="292" r="58" fill="url(#tc-seal)" filter="url(#tc-glow)"/>
+    <circle cx="256" cy="292" r="58" fill="none" stroke="#0A0714" stroke-width="8"/>
+    <path d="M256 262 V322 M232 292 H280" stroke="#0A0714" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

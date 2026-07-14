@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "note": "Six labeled preseason rounds. Every actor is u/commons_founder_* — synthetic, disclosed in the UI with a PRESEASON badge, and fully deterministic. Generated blocks expand as commons_founder_gen_### with stake = 10 + (i % 4) * 10.",
+  "founders": [
+    "ash",
+    "birch",
+    "cedar",
+    "dahlia",
+    "elm",
+    "fern",
+    "gorse",
+    "hazel",
+    "iris",
+    "juniper",
+    "kudzu",
+    "laurel"
+  ],
+  "rounds": [
+    {
+      "offset": -6,
+      "roman": "I",
+      "title": "PRESEASON I — THE FIRST FIRE",
+      "flavor": "The commons lights its first pot. Feed it together or watch it gutter.",
+      "archetype": "public_pot",
+      "params": { "threshold": 0.7, "feedMult": 2, "hoardMult": 3 },
+      "commits": [
+        { "user": "ash", "choice": "FEED", "stake": 30 },
+        { "user": "birch", "choice": "FEED", "stake": 20 },
+        { "user": "cedar", "choice": "FEED", "stake": 25 },
+        { "user": "dahlia", "choice": "FEED", "stake": 15 },
+        { "user": "elm", "choice": "FEED", "stake": 20 },
+        { "user": "fern", "choice": "FEED", "stake": 10 },
+        { "user": "gorse", "choice": "FEED", "stake": 20 },
+        { "user": "hazel", "choice": "FEED", "stake": 25 },
+        { "user": "iris", "choice": "FEED", "stake": 15 },
+        { "user": "juniper", "choice": "FEED", "stake": 10 },
+        { "user": "kudzu", "choice": "HOARD", "stake": 40 },
+        { "user": "laurel", "choice": "HOARD", "stake": 40 }
+      ],
+      "insuranceFor": [],
+      "expect": { "groupOutcome": "triumph", "feedPct": 83.3 }
+    },
+    {
+      "offset": -5,
+      "roman": "II",
+      "title": "PRESEASON II — THE LONG WINTER",
+      "flavor": "Four hundred souls. One pot. The cold makes hoarders of the frightened.",
+      "archetype": "public_pot",
+      "params": { "threshold": 0.7, "feedMult": 2, "hoardMult": 3 },
+      "commits": [
+        { "user": "ash", "choice": "FEED", "stake": 20 },
+        { "user": "birch", "choice": "FEED", "stake": 20 },
+        { "user": "cedar", "choice": "FEED", "stake": 15 },
+        { "user": "dahlia", "choice": "FEED", "stake": 15 },
+        { "user": "elm", "choice": "FEED", "stake": 10 },
+        { "user": "fern", "choice": "FEED", "stake": 25 },
+        { "user": "gorse", "choice": "FEED", "stake": 20 },
+        { "user": "hazel", "choice": "FEED", "stake": 10 },
+        { "user": "iris", "choice": "FEED", "stake": 15 },
+        { "user": "juniper", "choice": "FEED", "stake": 10 },
+        { "user": "kudzu", "choice": "HOARD", "stake": 40 },
+        { "user": "laurel", "choice": "HOARD", "stake": 40 }
+      ],
+      "generated": { "count": 388, "choices": { "FEED": 158, "HOARD": 230 } },
+      "insuranceFor": ["fern"],
+      "expect": { "groupOutcome": "ruin", "hoardPct": 58.0, "participants": 400 }
+    },
+    {
+      "offset": -4,
+      "roman": "III",
+      "title": "PRESEASON III — THE KNIFE'S EDGE",
+      "flavor": "The line is 70 percent. Watch how close a commons can bleed.",
+      "archetype": "public_pot",
+      "params": { "threshold": 0.7, "feedMult": 2, "hoardMult": 3 },
+      "commits": [
+        { "user": "ash", "choice": "FEED", "stake": 20 },
+        { "user": "birch", "choice": "FEED", "stake": 25 },
+        { "user": "cedar", "choice": "FEED", "stake": 15 },
+        { "user": "dahlia", "choice": "FEED", "stake": 15 },
+        { "user": "elm", "choice": "FEED", "stake": 10 },
+        { "user": "fern", "choice": "FEED", "stake": 10 },
+        { "user": "gorse", "choice": "FEED", "stake": 20 },
+        { "user": "hazel", "choice": "FEED", "stake": 10 },
+        { "user": "iris", "choice": "FEED", "stake": 15 },
+        { "user": "juniper", "choice": "FEED", "stake": 10 },
+        { "user": "kudzu", "choice": "HOARD", "stake": 40 },
+        { "user": "laurel", "choice": "HOARD", "stake": 40 }
+      ],
+      "generated": { "count": 488, "choices": { "FEED": 337, "HOARD": 151 } },
+      "insuranceFor": ["birch"],
+      "expect": { "groupOutcome": "ruin", "feedPct": 69.4, "participants": 500 }
+    },
+    {
+      "offset": -3,
+      "roman": "IV",
+      "title": "PRESEASON IV — THE STAG",
+      "flavor": "Eight of ten had to hold the line. One by one they broke for the safe hare — only ash refused, and the stag walked anyway. This is the night that made a Saint.",
+      "archetype": "stag_hunt",
+      "params": { "threshold": 0.8, "stagMult": 3, "hareMult": 1.5 },
+      "commits": [
+        { "user": "ash", "choice": "STAG", "stake": 25 },
+        { "user": "birch", "choice": "HARE", "stake": 20 },
+        { "user": "cedar", "choice": "HARE", "stake": 20 },
+        { "user": "dahlia", "choice": "HARE", "stake": 15 },
+        { "user": "elm", "choice": "HARE", "stake": 15 },
+        { "user": "fern", "choice": "HARE", "stake": 10 },
+        { "user": "gorse", "choice": "HARE", "stake": 20 },
+        { "user": "hazel", "choice": "HARE", "stake": 30 },
+        { "user": "iris", "choice": "HARE", "stake": 25 },
+        { "user": "juniper", "choice": "HARE", "stake": 20 }
+      ],
+      "insuranceFor": [],
+      "expect": { "groupOutcome": "ruin", "stagPct": 10.0, "loneStag": "ash" }
+    },
+    {
+      "offset": -2,
+      "roman": "V",
+      "title": "PRESEASON V — THE QUIET NUMBER",
+      "flavor": "Everyone piled onto 1 and 2. Nobody looked at 3.",
+      "archetype": "lowest_unique",
+      "params": { "maxBid": 5, "winMult": 4, "loseFrac": 0.5 },
+      "commits": [
+        { "user": "ash", "choice": "BID_1", "stake": 20 },
+        { "user": "birch", "choice": "BID_1", "stake": 15 },
+        { "user": "cedar", "choice": "BID_1", "stake": 10 },
+        { "user": "dahlia", "choice": "BID_2", "stake": 20 },
+        { "user": "elm", "choice": "BID_2", "stake": 15 },
+        { "user": "fern", "choice": "BID_2", "stake": 10 },
+        { "user": "gorse", "choice": "BID_3", "stake": 25 },
+        { "user": "hazel", "choice": "BID_4", "stake": 20 },
+        { "user": "iris", "choice": "BID_5", "stake": 15 }
+      ],
+      "insuranceFor": [],
+      "expect": { "winnerBid": 3, "winner": "gorse" }
+    },
+    {
+      "offset": -1,
+      "roman": "VI",
+      "title": "PRESEASON VI — THE HEIST",
+      "flavor": "The vault wants a crew of one in eight. Somewhere, a nine-year lurker reaches out.",
+      "archetype": "exact_n",
+      "params": { "targetFrac": 0.125, "band": 0.05, "heistMult": 5, "guardMult": 1.5 },
+      "commits": [
+        { "user": "laurel", "choice": "HEIST", "stake": 40 },
+        { "user": "ash", "choice": "GUARD", "stake": 20 },
+        { "user": "birch", "choice": "GUARD", "stake": 20 },
+        { "user": "cedar", "choice": "GUARD", "stake": 15 },
+        { "user": "dahlia", "choice": "GUARD", "stake": 15 },
+        { "user": "elm", "choice": "GUARD", "stake": 10 },
+        { "user": "fern", "choice": "GUARD", "stake": 10 },
+        { "user": "gorse", "choice": "GUARD", "stake": 20 }
+      ],
+      "insuranceFor": [],
+      "expect": { "groupOutcome": "mixed", "heistPct": 12.5 }
+    }
+  ],
+  "tonight": {
+    "title": "THE BLACKOUT POT",
+    "flavor": "Feed the pot and pray. If enough of you feed, every stake multiplies. Hoarders take triple — unless the hoarding tips the line, and everything burns.",
+    "archetype": "public_pot",
+    "params": { "threshold": 0.7, "feedMult": 2, "hoardMult": 3 }
+  }
+}

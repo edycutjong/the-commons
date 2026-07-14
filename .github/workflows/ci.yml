@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs for the same branch/PR.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: "Gates · lint · type-check · tests · build · settle bench"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (eslint)
+        run: npm run lint
+
+      - name: Type check (tsc --noEmit)
+        run: npx tsc --noEmit
+
+      # Coverage is scoped (vitest.config.ts) to src/shared + src/server/core
+      # + src/server/routes — the pure/mockable business logic — at a 100%
+      # threshold; src/client/** (React webview, needs a real browser) and
+      # src/server/index.ts (process bootstrap — the only file that touches
+      # @devvit/web/server) are excluded on purpose, same as the two pure
+      # `export type`-only files (deps.ts, redis.ts) which have zero runtime
+      # statements to cover.
+      - name: Unit + integration tests + coverage (100% on shared/core/routes)
+        run: npm run test:coverage
+
+      - name: Build (vite → dist/client + dist/server)
+        run: npm run build
+
+      - name: Settle-latency bench (10k p95 < 2s budget gate)
+        run: node scripts/bench.mjs
+
+      - name: Submission-readiness compliance gate
+        run: node scripts/check_submission_readiness.mjs --fast
+
+  # ── Security (parallel with gates) ────────────────────────
+  secret-scan:
+    name: "Security · Secret scanning"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history for scanning past commits
+      - name: TruffleHog secret scan
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+  dependency-audit:
+    name: "Security · Dependency audit"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+      - name: Install dependencies
+        run: npm ci
+      - name: npm audit (high + critical)
+        run: npm run audit
+        continue-on-error: true # advisory — devvit CLI's own transitive deps carry unfixable-upstream advisories

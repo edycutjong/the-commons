@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Commons — Pitch Deck</title>
+<meta name="description" content="The Commons pitch deck — one secret choice a night, the whole subreddit lives with it. Reddit Games with a Hook.">
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Commons — Pitch Deck">
+<meta property="og:description" content="The Commons pitch deck — one secret choice a night, the whole subreddit lives with it. Reddit Games with a Hook.">
+<meta property="og:image" content="https://edycutjong.github.io/the-commons/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:url" content="https://edycutjong.github.io/the-commons/pitch/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#080611;
+    --primary:#8B5CF6;
+    --primary-ink:#DDD6FE;
+    --accent:#10B981;
+    --danger:#F0567A;
+    --ink:#ECE8FF;
+    --muted:#9B93C4;
+    --card:rgba(255,255,255,0.045);
+    --card-border:rgba(255,255,255,0.11);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0; height:100%;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 600px at 10% -10%, rgba(139,92,246,0.18), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 95% 105%, rgba(16,185,129,0.13), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow:hidden;
+  }
+  .mono{font-family:'JetBrains Mono', Menlo, Consolas, monospace;}
+
+  /* ===== deck chrome ===== */
+  #chrome{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 22px;
+    background:rgba(8,6,17,0.6);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--card-border);
+    font-size:0.82rem;
+  }
+  #chrome .brand{display:flex; align-items:center; gap:8px; font-weight:700; color:var(--primary-ink);}
+  #chrome .brand svg{width:22px; height:22px;}
+  #chrome .nav-btns{display:flex; align-items:center; gap:10px; color:var(--muted);}
+  #chrome button{
+    background:var(--card); border:1px solid var(--card-border); color:var(--ink);
+    border-radius:8px; padding:6px 12px; cursor:pointer; font-size:0.82rem;
+  }
+  #chrome button:hover{border-color:rgba(139,92,246,0.5);}
+  #chrome a.home{color:var(--muted); text-decoration:none;}
+  #chrome a.home:hover{color:var(--ink);}
+  #progress{
+    position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg, var(--primary), var(--accent));
+    z-index:60; transition:width .25s ease;
+  }
+
+  /* ===== deck ===== */
+  #deck{
+    height:100vh; width:100vw; position:relative;
+  }
+  .slide{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:100px 8vw 60px;
+    opacity:0; visibility:hidden;
+    transform:translateY(18px);
+    transition:opacity .45s ease, transform .45s ease;
+  }
+  .slide.active{opacity:1; visibility:visible; transform:translateY(0);}
+  .slide-inner{max-width:1100px; margin:0 auto; width:100%;}
+
+  .kicker{
+    font-family:'JetBrains Mono', Menlo, Consolas, monospace;
+    font-size:0.75rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent);
+    margin-bottom:14px; display:inline-block;
+  }
+  h1.big{
+    font-size:clamp(2.2rem, 5.6vw, 4rem); font-weight:800; margin:0 0 14px; line-height:1.05;
+    background:linear-gradient(120deg, #fff 0%, #C9C2F0 55%, var(--primary) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  h2.sub{font-size:clamp(1.1rem,2.4vw,1.5rem); font-weight:600; color:var(--primary-ink); margin:0 0 22px;}
+  .lede{color:var(--muted); font-size:1.05rem; max-width:760px; margin:0 0 20px;}
+  .quote{
+    border-left:3px solid var(--primary); padding:14px 22px; color:var(--ink);
+    background:var(--card); border-radius:0 12px 12px 0; font-style:italic; max-width:760px; margin:18px 0;
+  }
+  .num{font-family:'JetBrains Mono', Menlo, Consolas, monospace; color:var(--accent); font-weight:700;}
+
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .grid4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media (max-width:900px){ .grid2,.grid3,.grid4{grid-template-columns:1fr;} }
+
+  .card{background:var(--card); border:1px solid var(--card-border); border-radius:16px; padding:22px 24px;}
+  .card h3{margin:0 0 8px; font-size:1.05rem; color:var(--ink);}
+  .card p{margin:0; color:var(--muted); font-size:0.92rem;}
+  .card.dim{opacity:0.75;}
+  .card.danger{border-color:rgba(240,86,122,0.4); background:rgba(240,86,122,0.06);}
+  .card.win{border-color:rgba(16,185,129,0.4); background:rgba(16,185,129,0.06);}
+
+  table{width:100%; border-collapse:collapse; font-size:0.9rem;}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--card-border);}
+  th{color:var(--muted); font-weight:600; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;}
+  td{color:var(--ink);}
+  td .mono{color:var(--accent);}
+
+  .ribbon{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; margin:24px 0;}
+  .ribbon .step{
+    background:var(--card); border:1px solid var(--card-border); border-radius:14px;
+    padding:16px 22px; text-align:center; min-width:150px;
+  }
+  .ribbon .step .lbl{font-family:'JetBrains Mono', Menlo, Consolas, monospace; font-size:0.78rem; color:var(--primary); margin-bottom:6px;}
+  .ribbon .arrow{color:var(--muted); font-size:1.3rem;}
+
+  .stat-wall{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+  @media (max-width:900px){ .stat-wall{grid-template-columns:repeat(2,1fr);} }
+  .stat{background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:18px; text-align:center;}
+  .stat .v{font-family:'JetBrains Mono', Menlo, Consolas, monospace; font-size:1.4rem; color:var(--accent); font-weight:700;}
+  .stat .l{color:var(--muted); font-size:0.78rem; margin-top:4px;}
+
+  footer.slide-foot{
+    position:absolute; bottom:22px; left:8vw; right:8vw;
+    display:flex; justify-content:space-between; color:var(--muted); font-size:0.75rem;
+    font-family:'JetBrains Mono', Menlo, Consolas, monospace;
+  }
+
+  .notes{
+    margin-top:22px; font-size:0.82rem; color:var(--muted);
+    border-top:1px dashed var(--card-border); padding-top:14px; max-width:820px;
+  }
+  .notes b{color:var(--primary-ink);}
+
+  .closing-mark{display:flex; justify-content:center; margin-bottom:18px;}
+  .closing-mark svg{width:80px; height:80px; filter:drop-shadow(0 0 30px rgba(139,92,246,0.4));}
+
+  /* ===== print ===== */
+  @media print{
+    #chrome, #progress{display:none !important;}
+    html,body{height:auto; overflow:visible; background:var(--bg) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    #deck{height:auto; position:static;}
+    .slide{
+      position:static; opacity:1 !important; visibility:visible !important; transform:none !important;
+      page-break-after:always; break-after:page;
+      height:100vh; width:100vw;
+      padding:60px 8vw;
+    }
+    .slide:last-child{page-break-after:auto;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .slide{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; width:0; height:0; overflow:hidden;" aria-hidden="true">
+  <defs>
+    <!-- icon-serpent: Saint / Serpent reputation flair -->
+    <symbol id="icon-serpent" viewBox="0 0 24 24">
+      <path d="M5 8c0-2.5 2-3.5 3.8-2.4 1.8 1.1 1 3.3-.8 3.9-2.6.9-3.3 3.1-1.6 4.8 2 2 5.8 1 6.9-1.6 1.2-2.8 3.8-3.6 5.6-1.9 1.5 1.5 1.3 3.8-.6 4.9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="6.1" cy="6.9" r="1.05" fill="var(--accent,#10B981)"/>
+      <path d="M17.6 16.2c.9-.3 1.7-.2 2.4.4" stroke="var(--accent,#10B981)" stroke-width="1.4" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="progress" style="width:8.3%;"></div>
+<div id="chrome">
+  <div class="brand">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="22" height="22" role="img" aria-label="The Commons icon: a sealed ballot envelope stamping shut">
+  <!-- The Commons animated mark — the nightly sealed ballot. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="tc-brand-chrome" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="var(--accent, #10B981)"/>
+    </linearGradient>
+    <radialGradient id="tc-seal-chrome" cx="0.4" cy="0.35" r="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="45%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </radialGradient>
+    <filter id="tc-glow-chrome" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tc-stamp  { animation: tc-stamp 2.8s cubic-bezier(.34,1.56,.64,1) infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-ring   { animation: tc-ring 2.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-flap   { stroke-dasharray: 26 14; animation: tc-flap 2.2s linear infinite; }
+      .tc-tick   { animation: tc-tick 2.8s ease-in-out infinite; }
+      @keyframes tc-stamp { 0%,72%,100% { transform: scale(1); } 80% { transform: scale(1.14); } 88% { transform: scale(0.98); } 94% { transform: scale(1.04); } }
+      @keyframes tc-ring  { 0%,72% { transform: scale(0.6); opacity: 0; } 80% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+      @keyframes tc-flap  { to { stroke-dashoffset: -80; } }
+      @keyframes tc-tick  { 0%,100% { opacity: 0.35; } 78% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .tc-stamp,.tc-ring,.tc-flap,.tc-tick { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0A0714"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#tc-brand-chrome)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Midnight ticks -->
+  <g class="tc-tick" stroke="url(#tc-brand-chrome)" stroke-width="12" stroke-linecap="round">
+    <line x1="256" y1="72" x2="256" y2="108"/>
+    <line x1="196" y1="92" x2="208" y2="120"/>
+    <line x1="316" y1="92" x2="304" y2="120"/>
+  </g>
+
+  <!-- Envelope body -->
+  <rect x="96" y="164" width="320" height="220" rx="28" fill="none" stroke="url(#tc-brand-chrome)" stroke-width="18"/>
+  <!-- Envelope flap: sealing energy runs along it -->
+  <path class="tc-flap" d="M104 186 L256 300 L408 186" fill="none" stroke="url(#tc-brand-chrome)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Stamp shockwave ring -->
+  <circle class="tc-ring" cx="256" cy="292" r="58" fill="none" stroke="var(--primary, #8B5CF6)" stroke-width="8" opacity="0"/>
+
+  <!-- Wax seal (thumps shut each cycle) -->
+  <g class="tc-stamp">
+    <circle cx="256" cy="292" r="58" fill="url(#tc-seal-chrome)" filter="url(#tc-glow-chrome)"/>
+    <circle cx="256" cy="292" r="58" fill="none" stroke="#0A0714" stroke-width="8"/>
+    <path d="M256 262 V322 M232 292 H280" stroke="#0A0714" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>
+
+    <span>The Commons — Pitch Deck</span>
+  </div>
+  <div class="nav-btns">
+    <a class="home" href="../">← Landing page</a>
+    <button id="prevBtn" aria-label="Previous slide">‹ Prev</button>
+    <span class="mono" id="pageIndicator">1 / 12</span>
+    <button id="nextBtn" aria-label="Next slide">Next ›</button>
+  </div>
+</div>
+
+<div id="deck">
+
+  <!-- SLIDE 1 — Title -->
+  <section class="slide" data-idx="1">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="closing-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" role="img" aria-label="The Commons icon: a sealed ballot envelope stamping shut">
+  <!-- The Commons animated mark — the nightly sealed ballot. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="tc-brand-s1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="var(--accent, #10B981)"/>
+    </linearGradient>
+    <radialGradient id="tc-seal-s1" cx="0.4" cy="0.35" r="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="45%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </radialGradient>
+    <filter id="tc-glow-s1" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tc-stamp  { animation: tc-stamp 2.8s cubic-bezier(.34,1.56,.64,1) infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-ring   { animation: tc-ring 2.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-flap   { stroke-dasharray: 26 14; animation: tc-flap 2.2s linear infinite; }
+      .tc-tick   { animation: tc-tick 2.8s ease-in-out infinite; }
+      @keyframes tc-stamp { 0%,72%,100% { transform: scale(1); } 80% { transform: scale(1.14); } 88% { transform: scale(0.98); } 94% { transform: scale(1.04); } }
+      @keyframes tc-ring  { 0%,72% { transform: scale(0.6); opacity: 0; } 80% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+      @keyframes tc-flap  { to { stroke-dashoffset: -80; } }
+      @keyframes tc-tick  { 0%,100% { opacity: 0.35; } 78% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .tc-stamp,.tc-ring,.tc-flap,.tc-tick { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0A0714"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#tc-brand-s1)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Midnight ticks -->
+  <g class="tc-tick" stroke="url(#tc-brand-s1)" stroke-width="12" stroke-linecap="round">
+    <line x1="256" y1="72" x2="256" y2="108"/>
+    <line x1="196" y1="92" x2="208" y2="120"/>
+    <line x1="316" y1="92" x2="304" y2="120"/>
+  </g>
+
+  <!-- Envelope body -->
+  <rect x="96" y="164" width="320" height="220" rx="28" fill="none" stroke="url(#tc-brand-s1)" stroke-width="18"/>
+  <!-- Envelope flap: sealing energy runs along it -->
+  <path class="tc-flap" d="M104 186 L256 300 L408 186" fill="none" stroke="url(#tc-brand-s1)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Stamp shockwave ring -->
+  <circle class="tc-ring" cx="256" cy="292" r="58" fill="none" stroke="var(--primary, #8B5CF6)" stroke-width="8" opacity="0"/>
+
+  <!-- Wax seal (thumps shut each cycle) -->
+  <g class="tc-stamp">
+    <circle cx="256" cy="292" r="58" fill="url(#tc-seal-s1)" filter="url(#tc-glow-s1)"/>
+    <circle cx="256" cy="292" r="58" fill="none" stroke="#0A0714" stroke-width="8"/>
+    <path d="M256 262 V322 M232 292 H280" stroke="#0A0714" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>
+</div>
+      <span class="kicker">Reddit · Games with a Hook</span>
+      <h1 class="big">THE COMMONS</h1>
+      <h2 class="sub">One secret choice a night. The whole subreddit lives with it.</h2>
+      <p class="lede" style="margin:0 auto;">A nightly sealed social dilemma on Reddit — the crowd is the game board.</p>
+      <div class="quote" style="margin:26px auto 0; text-align:left;">
+        A nine-year lurker who has never once commented casts a single secret <b>BETRAY</b> that burns the entire subreddit's pot — then reads three hundred furious comments knowing nobody will ever suspect her.
+      </div>
+    </div>
+    <footer class="slide-foot"><span>THE COMMONS</span><span>1 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 2 — Problem -->
+  <section class="slide" data-idx="2">
+    <div class="slide-inner">
+      <span class="kicker">The Problem</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.8rem);">Two failure modes, one tired genre</h1>
+      <div class="grid2" style="margin-top:26px;">
+        <div class="card dim">
+          <h3>Daily Reddit games</h3>
+          <p>Close the loop the instant you play. Instant feedback → nothing to come back for. The hook dies at first tap.</p>
+        </div>
+        <div class="card dim">
+          <h3>"Community" games</h3>
+          <p>A thousand people playing <i>alone</i> in the same post. The crowd is scenery, never the stakes.</p>
+        </div>
+      </div>
+      <div class="quote">Nothing makes the <b>crowd itself</b> the game — and nothing gives Reddit's largest population, the <b>lurkers</b>, a way to play with zero public exposure.</div>
+    </div>
+    <footer class="slide-foot"><span>THE PROBLEM</span><span>2 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 3 — Solution -->
+  <section class="slide" data-idx="3">
+    <div class="slide-inner">
+      <span class="kicker">The Solution</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.8rem);">One sealed social dilemma per night</h1>
+      <div class="ribbon">
+        <div class="step"><div class="lbl">01 · READ</div>tonight's payoff structure + a live ticker</div>
+        <span class="arrow">→</span>
+        <div class="step"><div class="lbl">02 · SEAL</div>one secret choice, no take-backs</div>
+        <span class="arrow">→</span>
+        <div class="step"><div class="lbl">03 · RECKONING</div>one transaction settles everyone</div>
+      </div>
+      <div class="quote">The game is deliberately <b>incomplete while you play it</b>: you cannot learn your fate without returning tomorrow. Retention is the skeleton, not a bolt-on.</div>
+    </div>
+    <footer class="slide-foot"><span>THE SOLUTION</span><span>3 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 4 — Live Demo -->
+  <section class="slide" data-idx="4">
+    <div class="slide-inner">
+      <span class="kicker">Live Demo · The Magic Moment</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">The "oh" lands in 5 seconds</h1>
+      <p class="lede">A lone judge, mid-cycle, on a phone — no wait for midnight. The webview leads with the reveal, not a form.</p>
+      <table>
+        <tr><th>Time</th><th>Beat</th></tr>
+        <tr><td class="mono">0:00–0:06</td><td>Post opens straight into an <b>animated Reckoning</b> — bars sweep in, verdict punches: <span style="color:var(--danger);">"58.0% hoarded. The pot burned."</span> · 400 souls · pot 9,940 · a <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" style="vertical-align:-2px; color:var(--accent);"><use href="#icon-serpent"/></svg> Serpent wearing a name.</td></tr>
+        <tr><td class="mono">0:07–0:10</td><td>A <b>TONIGHT</b> divider, then the same mechanic <i>open right now</i>: THE BLACKOUT POT, live ticker, two sealed buttons.</td></tr>
+        <tr><td class="mono">0:10–0:20</td><td>The judge taps FEED/HOARD, drags a stake, taps <b>SEAL</b> → SEALED · REVEAL IN 05:59:xx, ticker ticks to 1 soul sealed.</td></tr>
+        <tr><td class="mono">0:20–0:28</td><td>The retention hook lands unaided: "I can't find out what happens to my envelope without coming back."</td></tr>
+      </table>
+    </div>
+    <footer class="slide-foot"><span>LIVE DEMO</span><span>4 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 5 — Architecture -->
+  <section class="slide" data-idx="5">
+    <div class="slide-inner">
+      <span class="kicker">Architecture &amp; Stack</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Sealed by construction, not by convention</h1>
+      <table>
+        <tr><th>Layer</th><th>Technology</th><th>The hard part</th></tr>
+        <tr><td>Client</td><td class="mono">Framework-free TS webview</td><td>reveal choreography; never learns the split</td></tr>
+        <tr><td>Server</td><td class="mono">Hono on @devvit/web</td><td>/api/round · /commit · /history · /forge · /ladders</td></tr>
+        <tr><td>State</td><td class="mono">Devvit Redis — hashes + zsets</td><td>no plain lists/sets (no key-scan)</td></tr>
+        <tr><td>Settle</td><td class="mono">watch/multi/exec</td><td>pure fn of (commits, params) → byte-identical reruns</td></tr>
+        <tr><td>Clock</td><td class="mono">Devvit scheduler crons</td><td>00:00 settle · 00:05 open · Mon 01:00 ceremony</td></tr>
+        <tr><td>Ceremony</td><td class="mono">Reddit flair + stickied comment</td><td>wearable consequences in-community</td></tr>
+      </table>
+      <p class="lede" style="margin-top:18px;"><b style="color:var(--primary-ink);">Invariants:</b> I1 the split is unobservable pre-settle · I2 one commit per account (HSETNX) · I3 settle is idempotent. Zero runtime AI. Zero external APIs. Empty fetch allowlist.</p>
+    </div>
+    <footer class="slide-foot"><span>ARCHITECTURE</span><span>5 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 6 — Why it wins -->
+  <section class="slide" data-idx="6">
+    <div class="slide-inner">
+      <span class="kicker">Why It Wins This Rubric</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Four equal axes, one mechanic</h1>
+      <div class="grid4">
+        <div class="card win"><h3>Delightful UX</h3><p>One thumb, one choice, a sealed envelope and a countdown. First-visit completion under 15 seconds.</p></div>
+        <div class="card win"><h3>Polish</h3><p>No physics/content pipeline to get wrong — the whole budget is micro-interactions + the reveal. 126 tests, benched.</p></div>
+        <div class="card win"><h3>Reddit-y</h3><p>The game board is the community's collective psychology; the comment section becomes propaganda, then accusations.</p></div>
+        <div class="card win"><h3>Hook-y</h3><p>Structural unfinished business every 24h — you cannot close the loop without coming back.</p></div>
+      </div>
+      <div class="quote" style="margin-top:22px;">Dodges every auto-lose: no AI slop, no on-the-nose Reddit theming, not a clone / shooter / trivia.</div>
+    </div>
+    <footer class="slide-foot"><span>WHY IT WINS</span><span>6 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 7 — Viability -->
+  <section class="slide" data-idx="7">
+    <div class="slide-inner">
+      <span class="kicker">Viability — it survives past the demo</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Infinite content, zero authoring cost</h1>
+      <div class="grid2">
+        <div class="card"><h3>Five payoff archetypes</h3><p>Public Pot, Stag Hunt, Chicken, Lowest-Unique-Bid, Exact-N Heist — parameterized structures, not written content. A new dilemma every night forever, zero AI.</p></div>
+        <div class="card"><h3>The Dilemma Forge</h3><p>Parameter sliders + a filtered 140-char flavor line → mod approval → rotation, author credited on the post.</p></div>
+        <div class="card"><h3>Per-subreddit moral economies</h3><p>Each sub runs its own siloed season — emergent cross-community lore ("r/aww fed the pot 12 nights straight").</p></div>
+        <div class="card"><h3>Live-ops as content</h3><p>Real rounds run nightly; tuning notes appended to the README in public.</p></div>
+      </div>
+    </div>
+    <footer class="slide-foot"><span>VIABILITY</span><span>7 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 8 — Competitive Advantage -->
+  <section class="slide" data-idx="8">
+    <div class="slide-inner">
+      <span class="kicker">Competitive Advantage — why ONLY Reddit</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Off-platform you'd need five systems — and it'd still be dead</h1>
+      <table>
+        <tr><th>Devvit surface used</th><th>Off-Reddit you'd need</th></tr>
+        <tr><td>Server-only Redis hashes for sealed commits</td><td>a backend + DB + auth — and the trust problem of proving you can't peek</td></tr>
+        <tr><td>watch/multi/exec settle</td><td>a job queue with exactly-once semantics</td></tr>
+        <tr><td>Scheduler cron as the game clock</td><td>a cron + retry/alerting service</td></tr>
+        <tr><td>Reddit daily post + stickied Reckoning</td><td>a bot account + OAuth + posting infra</td></tr>
+        <tr><td><b>User flair</b> as consequence</td><td><span style="color:var(--danger);">nothing comparable exists off-platform</span></td></tr>
+        <tr><td>A resident crowd with a shared nightly rhythm</td><td>an audience you don't have</td></tr>
+      </table>
+    </div>
+    <footer class="slide-foot"><span>COMPETITIVE ADVANTAGE</span><span>8 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 9 — Traction -->
+  <section class="slide" data-idx="9">
+    <div class="slide-inner">
+      <span class="kicker">Traction &amp; Validation — real numbers</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">For a solo build, traction is engineering validation</h1>
+      <div class="stat-wall">
+        <div class="stat"><div class="v">126</div><div class="l">tests, 11 files — all passing</div></div>
+        <div class="stat"><div class="v">strict</div><div class="l">tsc --noEmit, clean</div></div>
+        <div class="stat"><div class="v">~63ms</div><div class="l">10k-commit settle p95 (2s budget)</div></div>
+        <div class="stat"><div class="v">100%</div><div class="l">byte-identical seed / re-settle</div></div>
+      </div>
+      <p class="lede" style="margin-top:22px;">Scale-free payoffs (percent-thresholds) mean an 8-person judging room feels the same tension as a 10k subreddit — the empty-room risk is neutralized by design.</p>
+    </div>
+    <footer class="slide-foot"><span>TRACTION</span><span>9 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 10 — Roadmap -->
+  <section class="slide" data-idx="10">
+    <div class="slide-inner">
+      <span class="kicker">Roadmap — 30 / 60 / 90</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">What's built vs. what's next</h1>
+      <div class="grid3">
+        <div class="card"><h3>Now → launch</h3><p>Front-load the subreddit ban/unban round-trip; publish the-commons; run real nightly rounds so the live feed shows genuine Reckonings by judging.</p></div>
+        <div class="card"><h3>30 days</h3><p>Ship the two server-complete screens as UI — the Forge sheet and the Ladders sheet — plus the commit-side envelope/wax-seal micro-animation.</p></div>
+        <div class="card"><h3>60–90 days</h3><p>Faction weeks, cross-round heist arcs, lowest-unique auctions on season points, and (deferred) Devvit payments for cosmetic season passes — never pay-to-win.</p></div>
+      </div>
+    </div>
+    <footer class="slide-foot"><span>ROADMAP</span><span>10 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 11 — The Builder -->
+  <section class="slide" data-idx="11">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="closing-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" role="img" aria-label="The Commons icon: a sealed ballot envelope stamping shut">
+  <!-- The Commons animated mark — the nightly sealed ballot. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="tc-brand-s11" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="var(--accent, #10B981)"/>
+    </linearGradient>
+    <radialGradient id="tc-seal-s11" cx="0.4" cy="0.35" r="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="45%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </radialGradient>
+    <filter id="tc-glow-s11" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tc-stamp  { animation: tc-stamp 2.8s cubic-bezier(.34,1.56,.64,1) infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-ring   { animation: tc-ring 2.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-flap   { stroke-dasharray: 26 14; animation: tc-flap 2.2s linear infinite; }
+      .tc-tick   { animation: tc-tick 2.8s ease-in-out infinite; }
+      @keyframes tc-stamp { 0%,72%,100% { transform: scale(1); } 80% { transform: scale(1.14); } 88% { transform: scale(0.98); } 94% { transform: scale(1.04); } }
+      @keyframes tc-ring  { 0%,72% { transform: scale(0.6); opacity: 0; } 80% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+      @keyframes tc-flap  { to { stroke-dashoffset: -80; } }
+      @keyframes tc-tick  { 0%,100% { opacity: 0.35; } 78% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .tc-stamp,.tc-ring,.tc-flap,.tc-tick { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0A0714"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#tc-brand-s11)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Midnight ticks -->
+  <g class="tc-tick" stroke="url(#tc-brand-s11)" stroke-width="12" stroke-linecap="round">
+    <line x1="256" y1="72" x2="256" y2="108"/>
+    <line x1="196" y1="92" x2="208" y2="120"/>
+    <line x1="316" y1="92" x2="304" y2="120"/>
+  </g>
+
+  <!-- Envelope body -->
+  <rect x="96" y="164" width="320" height="220" rx="28" fill="none" stroke="url(#tc-brand-s11)" stroke-width="18"/>
+  <!-- Envelope flap: sealing energy runs along it -->
+  <path class="tc-flap" d="M104 186 L256 300 L408 186" fill="none" stroke="url(#tc-brand-s11)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Stamp shockwave ring -->
+  <circle class="tc-ring" cx="256" cy="292" r="58" fill="none" stroke="var(--primary, #8B5CF6)" stroke-width="8" opacity="0"/>
+
+  <!-- Wax seal (thumps shut each cycle) -->
+  <g class="tc-stamp">
+    <circle cx="256" cy="292" r="58" fill="url(#tc-seal-s11)" filter="url(#tc-glow-s11)"/>
+    <circle cx="256" cy="292" r="58" fill="none" stroke="#0A0714" stroke-width="8"/>
+    <path d="M256 262 V322 M232 292 H280" stroke="#0A0714" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>
+</div>
+      <span class="kicker">The Builder</span>
+      <h1 class="big" style="font-size:clamp(1.8rem,4.2vw,2.6rem);">Solo build. Disciplined shipping.</h1>
+      <p class="lede" style="margin:0 auto; max-width:720px;">One developer, ~three focused days on the engine + server + client, plus nightly live-ops through judging. Verified APIs only, a public friction log of what broke and why, and a submission-readiness gate that greps its own compliance rules.</p>
+    </div>
+    <footer class="slide-foot"><span>THE BUILDER</span><span>11 / 12</span></footer>
+  </section>
+
+  <!-- SLIDE 12 — Close -->
+  <section class="slide" data-idx="12">
+    <div class="slide-inner" style="text-align:center;">
+      <div class="closing-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="80" height="80" role="img" aria-label="The Commons icon: a sealed ballot envelope stamping shut">
+  <!-- The Commons animated mark — the nightly sealed ballot. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="tc-brand-s12" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="var(--accent, #10B981)"/>
+    </linearGradient>
+    <radialGradient id="tc-seal-s12" cx="0.4" cy="0.35" r="1">
+      <stop offset="0%" stop-color="#EDE9FE"/>
+      <stop offset="45%" stop-color="var(--primary, #8B5CF6)"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </radialGradient>
+    <filter id="tc-glow-s12" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .tc-stamp  { animation: tc-stamp 2.8s cubic-bezier(.34,1.56,.64,1) infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-ring   { animation: tc-ring 2.8s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+      .tc-flap   { stroke-dasharray: 26 14; animation: tc-flap 2.2s linear infinite; }
+      .tc-tick   { animation: tc-tick 2.8s ease-in-out infinite; }
+      @keyframes tc-stamp { 0%,72%,100% { transform: scale(1); } 80% { transform: scale(1.14); } 88% { transform: scale(0.98); } 94% { transform: scale(1.04); } }
+      @keyframes tc-ring  { 0%,72% { transform: scale(0.6); opacity: 0; } 80% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+      @keyframes tc-flap  { to { stroke-dashoffset: -80; } }
+      @keyframes tc-tick  { 0%,100% { opacity: 0.35; } 78% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .tc-stamp,.tc-ring,.tc-flap,.tc-tick { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0A0714"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#tc-brand-s12)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Midnight ticks -->
+  <g class="tc-tick" stroke="url(#tc-brand-s12)" stroke-width="12" stroke-linecap="round">
+    <line x1="256" y1="72" x2="256" y2="108"/>
+    <line x1="196" y1="92" x2="208" y2="120"/>
+    <line x1="316" y1="92" x2="304" y2="120"/>
+  </g>
+
+  <!-- Envelope body -->
+  <rect x="96" y="164" width="320" height="220" rx="28" fill="none" stroke="url(#tc-brand-s12)" stroke-width="18"/>
+  <!-- Envelope flap: sealing energy runs along it -->
+  <path class="tc-flap" d="M104 186 L256 300 L408 186" fill="none" stroke="url(#tc-brand-s12)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Stamp shockwave ring -->
+  <circle class="tc-ring" cx="256" cy="292" r="58" fill="none" stroke="var(--primary, #8B5CF6)" stroke-width="8" opacity="0"/>
+
+  <!-- Wax seal (thumps shut each cycle) -->
+  <g class="tc-stamp">
+    <circle cx="256" cy="292" r="58" fill="url(#tc-seal-s12)" filter="url(#tc-glow-s12)"/>
+    <circle cx="256" cy="292" r="58" fill="none" stroke="#0A0714" stroke-width="8"/>
+    <path d="M256 262 V322 M232 292 H280" stroke="#0A0714" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>
+</div>
+      <span class="kicker">The Ask</span>
+      <h1 class="big">THE COMMONS</h1>
+      <h2 class="sub">The crowd is the game. And whatever you choose tonight — nobody will ever know it was you.</h2>
+      <p class="lede mono" style="margin:0 auto;">developers.reddit.com/apps/the-commons · r/TheCommonsGame · public repo · ≤60s video</p>
+      <div class="grid2" style="max-width:520px; margin:30px auto 0;">
+        <a href="https://reddit.com/r/TheCommonsGame" style="text-decoration:none;"><div class="card win"><h3 style="text-align:center;">Play the live post ›</h3></div></a>
+        <a href="https://github.com/edycutjong/the-commons" style="text-decoration:none;"><div class="card"><h3 style="text-align:center;">View the code ›</h3></div></a>
+      </div>
+    </div>
+    <footer class="slide-foot"><span>THE ASK / CLOSE</span><span>12 / 12</span></footer>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var idx = 0;
+
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var indicator = document.getElementById('pageIndicator');
+  var progress = document.getElementById('progress');
+
+  function render(){
+    slides.forEach(function(s, i){ s.classList.toggle('active', i === idx); });
+    indicator.textContent = (idx + 1) + ' / ' + total;
+    progress.style.width = (((idx + 1) / total) * 100) + '%';
+    var hash = '#' + (idx + 1);
+    if (history.replaceState) history.replaceState(null, '', hash);
+  }
+
+  function go(delta){
+    idx = Math.max(0, Math.min(total - 1, idx + delta));
+    render();
+  }
+
+  prevBtn.addEventListener('click', function(){ go(-1); });
+  nextBtn.addEventListener('click', function(){ go(1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown'){ go(1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp'){ go(-1); e.preventDefault(); }
+    else if (e.key === 'Home'){ idx = 0; render(); }
+    else if (e.key === 'End'){ idx = total - 1; render(); }
+  });
+
+  document.getElementById('deck').addEventListener('click', function(e){
+    if (e.target.closest('a') || e.target.closest('button')) return;
+    var rect = document.getElementById('deck').getBoundingClientRect();
+    var clickX = e.clientX - rect.left;
+    if (clickX > rect.width / 2) go(1); else go(-1);
+  });
+
+  // touch swipe
+  var touchStartX = null;
+  document.getElementById('deck').addEventListener('touchstart', function(e){
+    touchStartX = e.changedTouches[0].clientX;
+  }, {passive:true});
+  document.getElementById('deck').addEventListener('touchend', function(e){
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, {passive:true});
+
+  // initial slide from hash
+  var initHash = parseInt((location.hash || '').replace('#',''), 10);
+  if (!isNaN(initHash) && initHash >= 1 && initHash <= total) idx = initHash - 1;
+
+  render();
+})();
+</script>
+
+</body>
+</html>
