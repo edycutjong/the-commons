@@ -83,5 +83,8 @@
   },
   "dev": {
     "subreddit": "the_commons_game_dev"
+  },
+  "marketingAssets": {
+    "icon": "assets/icon.png"
   }
 }
