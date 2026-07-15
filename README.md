@@ -181,6 +181,25 @@ Moderator menu actions: **Seed Preseason · Void Round · Force Settle · Approv
 
 ---
 
+## 📮 Submission checklist
+
+Run `npm run check:submission` before submitting. The demo-post URL stays a
+placeholder (and the gate stays red) until the post is live.
+
+- App listing: https://developers.reddit.com/apps/the-commons-game
+- Devpost project: https://devpost.com/software/the-commons
+- Demo video: https://www.youtube.com/watch?v=mgUb0PFsIW0
+- Demo post: <DEMO_POST_URL>
+- [x] `npm run lint` clean
+- [x] `npm run type-check` clean
+- [x] `npm test` green (222/222), `npm run test:coverage` at 100%
+- [x] `npm run build` succeeds
+- [x] Published to the App Directory (`devvit publish`, in review)
+- [x] 60-second demo video recorded & published (link above)
+- [x] Public repo + Devpost project page linked
+- [ ] `r/the_commons_game_dev` set to **Public**, demo post seeded (`Seed Preseason`) and verified against `DEMO.md`
+- [ ] Demo-post URL filled above + Devpost form submitted
+
 ## 🚧 What this is not (yet)
 
 The webview client (`src/client/`) is the honest, playable **core loop** — dilemma → sealed commit → Reckoning — in the midnight-violet design language. It **now includes** the Reckoning reveal choreography (bars sweep in, verdict punches, `ruin` flash), the reveal-first cold open, the live-ticker poll, and the in-app feed of past Reckonings. It is still **not** the full `UI.md` choreography: the commit-side **envelope/wax-seal animation** is unbuilt, and the **Forge** and **Ladders** screens have complete, tested servers (`/api/forge`, `/api/ladders`) but no dedicated screen yet — post-hackathon polish. See `docs/friction-log.md`.
