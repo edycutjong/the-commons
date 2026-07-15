@@ -6,10 +6,12 @@
 
   <br/><br/>
 
-  [![Reddit — Games with a Hook](https://img.shields.io/badge/Reddit-Games_with_a_Hook-8B5CF6?style=for-the-badge&logo=reddit&logoColor=white)](https://redditgameswithahook.devpost.com)
-  [![App listing](https://img.shields.io/badge/Devvit-the--commons-10B981?style=for-the-badge)](https://developers.reddit.com/apps/the-commons)
-  [![Landing Page](https://img.shields.io/badge/Landing-Page-8B5CF6?style=for-the-badge)](https://edycutjong.github.io/the-commons/)
-  [![Pitch Deck](https://img.shields.io/badge/Pitch-Deck-f59e0b?style=for-the-badge)](https://edycutjong.github.io/the-commons/pitch/)
+  [![Play on Reddit](https://img.shields.io/badge/Play_on-Reddit-8B5CF6?style=for-the-badge&labelColor=0B0A07)](https://www.reddit.com/r/the_commons_game_dev/)
+  [![Watch Demo](https://img.shields.io/badge/Watch-Demo-F43F5E?style=for-the-badge&labelColor=0B0A07)](https://www.youtube.com/watch?v=mgUb0PFsIW0)
+  [![Devpost](https://img.shields.io/badge/View_on-Devpost-003E54?style=for-the-badge&labelColor=0B0A07)](https://devpost.com/software/the-commons)
+  [![Landing Page](https://img.shields.io/badge/Landing-Page-10B981?style=for-the-badge&labelColor=0B0A07)](https://edycutjong.github.io/the-commons/)
+  [![Pitch Deck](https://img.shields.io/badge/Pitch-Deck-10B981?style=for-the-badge&labelColor=0B0A07)](https://edycutjong.github.io/the-commons/pitch/)
+  [![Games with a Hook](https://img.shields.io/badge/Reddit-Games_with_a_Hook-8B5CF6?style=for-the-badge&labelColor=0B0A07)](https://redditgameswithahook.devpost.com)
 
   <br/>
 
