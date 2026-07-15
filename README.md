@@ -168,10 +168,10 @@ Every push and PR runs the real gates on Node 20 via GitHub Actions (`.github/wo
 
 You cannot `devvit playtest` from CI — this is the human step. In order:
 
-1. **Front-load the subreddit ban round-trip (do this DAY ONE).** New hackathon subreddits are being **auto-banned** by Reddit safety automation ("Rule #2"), **including re-bans immediately after you install a Devvit app** (see `docs-cache/VERIFIED.md`). From your aged main account: create **r/TheCommonsGame** (and any spare test subs), add a **normal pinned post before installing anything**, and keep the unban forum thread handy — `redditgameswithahook.devpost.com/forum_topics/44175-…`. Expect a re-ban at first app install and request the manual unban there. Install `dr-admin-approve` per the rules.
+1. **Front-load the subreddit ban round-trip (do this DAY ONE).** New hackathon subreddits are being **auto-banned** by Reddit safety automation ("Rule #2"), **including re-bans immediately after you install a Devvit app** (see `docs-cache/VERIFIED.md`). From your aged main account: create **r/the_commons_game_dev** (and any spare test subs), add a **normal pinned post before installing anything**, and keep the unban forum thread handy — `redditgameswithahook.devpost.com/forum_topics/44175-…`. Expect a re-ban at first app install and request the manual unban there. Install `dr-admin-approve` per the rules.
 2. **Green locally first:** `npm run check` should print `READY.` (runs type-check + 222 tests + build).
 3. **`npm run login`** (`devvit login`) with the account that owns the app.
-4. **`npm run dev`** (`devvit playtest r/TheCommonsGame`) and open the installed post.
+4. **`npm run dev`** (`devvit playtest r/the_commons_game_dev`) and open the installed post.
 5. In the subreddit, run the mod menu **"The Commons: Seed Preseason"** — six labeled Reckonings + tonight's live round appear (deterministic; re-runnable).
 6. Walk the judge path in **[DEMO.md](./DEMO.md)**.
 

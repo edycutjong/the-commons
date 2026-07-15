@@ -9,10 +9,10 @@ The whole game in three taps and one return visit. Total time ≈ 30 seconds. Ev
 ```bash
 npm install && npm run build      # or: npm run check   (green gate)
 npm run login                     # devvit login
-npm run dev                       # devvit playtest r/TheCommonsGame
+npm run dev                       # devvit playtest r/the_commons_game_dev
 ```
 
-Then, in **r/TheCommonsGame**, run the mod menu action **"The Commons: Seed Preseason"**. This settles six labeled preseason rounds through the _real_ settle transaction and opens tonight's live round with an honest zero counter.
+Then, in **r/the_commons_game_dev**, run the mod menu action **"The Commons: Seed Preseason"**. This settles six labeled preseason rounds through the _real_ settle transaction and opens tonight's live round with an honest zero counter.
 
 > Prefer to see the seeded state without a subreddit? `npm run seed:local` prints the six Reckonings, tonight's round, and the ladders from the in-memory engine.
 
