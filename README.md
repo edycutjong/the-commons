@@ -193,7 +193,7 @@ placeholder (and the gate stays red) until the post is live.
 - App listing: https://developers.reddit.com/apps/the-commons-game
 - Devpost project: https://devpost.com/software/the-commons
 - Demo video: https://www.youtube.com/watch?v=mgUb0PFsIW0
-- Demo post: <DEMO_POST_URL>
+- Demo post: https://www.reddit.com/r/the_commons_game_dev/s/VqzGS9aO6m
 - [x] `npm run lint` clean
 - [x] `npm run type-check` clean
 - [x] `npm test` green (222/222), `npm run test:coverage` at 100%
@@ -201,7 +201,7 @@ placeholder (and the gate stays red) until the post is live.
 - [x] Published to the App Directory (`devvit publish`, in review)
 - [x] 60-second demo video recorded & published (link above)
 - [x] Public repo + Devpost project page linked
-- [ ] `r/the_commons_game_dev` set to **Public**, demo post seeded (`Seed Preseason`) and verified against `DEMO.md`
+- [x] `r/the_commons_game_dev` set to **Public**, demo post seeded (`Seed Preseason`) and verified against `DEMO.md`
 - [ ] Demo-post URL filled above + Devpost form submitted
 
 ## 🚧 What this is not (yet)
