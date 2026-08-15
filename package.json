@@ -39,7 +39,7 @@
     "@devvit/start": "0.13.9",
     "@devvit/web": "0.13.11",
     "@hono/node-server": "^2.1.0",
-    "devvit": "0.13.8",
+    "devvit": "0.14.0",
     "hono": "^4.12.31",
     "react": "^19.2.8",
     "react-dom": "^19.2.7"
