@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/edycutjong/the-commons/compare/v1.1.0...v1.1.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* **deps:** resolve 18 dependency vulnerabilities via lockfile ([a62bd67](https://github.com/edycutjong/the-commons/commit/a62bd67306217ee33ffbd2dea2a02f953a281a88))
+
 # [1.1.0](https://github.com/edycutjong/the-commons/compare/v1.0.0...v1.1.0) (2026-07-15)
 
 
